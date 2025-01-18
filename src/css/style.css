@@ -20,13 +20,22 @@ a {
 }
 
 .header {
-  margin: 41px 0 220px 0;
+  margin: 12px 0 100px 0;
 }
 
 .header__inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.header__link-item {
+  transition: transform 0.2s ease;
+}
+
+.header__link-item:hover,
+.footer__icon:hover {
+  transform: scale(1.15);
 }
 
 .header__nav {
@@ -38,6 +47,30 @@ a {
 .menu__list {
   display: flex;
   gap: 50px;
+  padding: 0;
+}
+
+.menu__list-item {
+  position: relative;
+  padding: 10px 15px;
+  color: #666;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.menu__list-item::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 0%;
+  height: 1.5px;
+  background-color: #666;
+  transition: width 0.3s ease;
+}
+
+.menu__list-item:hover::after {
+  width: 100%;
 }
 
 .header__link {
@@ -49,23 +82,115 @@ a {
 .info__inner {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 350px;
+  margin-bottom: 300px;
+  position: relative;
+}
+
+.anchor {
+  top: 400px;
+  right: 880px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 50px;
+  border: 2px solid #282a56;
+  padding: 24px 70px 23px;
+  overflow: hidden;
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+.anchor:hover {
+  transform: scale(0.95);
+}
+
+.button a::before {
+  position: absolute;
+  content: "";
+  z-index: 0;
+  background-color: #282a56;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  height: 111%;
+  transition: all 0.3s ease;
+}
+
+.button a:hover::before {
+  height: 8%;
+}
+
+.button span {
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.myphoto {
+  border-radius: 40px;
+  width: 349px;
+  border: #42446e 1px solid;
+  box-shadow: 15px 10px 30px 0 rgba(63, 63, 63, 0.804);
 }
 
 .info-title {
   font-weight: 700;
   font-size: 58px;
-
   line-height: 121%;
   letter-spacing: -0.02em;
   color: #42446e;
+  width: 607px;
 }
 
 span {
-    background: linear-gradient(90deg, #13b0f5 2.6%, #e70faa 100%);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+  background: linear-gradient(90deg, #13b0f5 2.6%, #e70faa 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about {
+  margin-bottom: 200px;
+}
+
+.about__info {
+  justify-self: center;
+}
+
+.about__title {
+  font-weight: 700;
+  font-size: 48px;
+  text-align: center;
+  line-height: 124%;
+  letter-spacing: -0.01em;
+  color: #42446e;
+}
+
+.about__subtitle {
+  font-size: 32px;
+
+  line-height: 140%;
+}
+
+.about__text {
+  max-width: 920px;
+  font-size: 18px;
+  line-height: 144%;
+  color: #666;
+  position: relative;
+  margin: 0;
+}
+
+.about__text::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 10px;
+  background-color: #42446e;
+}
 
 .stack {
   margin-bottom: 215px;
@@ -93,10 +218,37 @@ span {
   grid-template-columns: repeat(4, 1fr);
   row-gap: 78px;
   column-gap: 70px;
-  justify-content: end;
+  align-items: center;
   img {
     justify-self: center;
+    height: 120px;
   }
+}
+
+.stack__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+   -15px -15px 100px hsla(0, 0%, 100%, 1),
+    15px 15px 8px rgba(0, 0, 0, 0.15),
+    -5px -5px 15px rgba(0, 0, 0, 0.1),
+    5px 5px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  height: 100%;
+}
+
+.stack__name {
+  margin-bottom: 0;
+  color: #42446e;
+  font-size: 25px;
+}
+
+.stack__inner:hover {
+  box-shadow: -8px -8px 52px hsla(0, 0%, 100%, 0.447), 3px 3px 10px; 
+  transform: translate(3px, 8px);
 }
 
 .projects {
@@ -128,7 +280,7 @@ span {
 
 .projects__carts {
   border-radius: 20px;
-  box-shadow: 2px 2px 100px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 20px 20px 20px 0 rgba(0, 0, 0, 0.7);
   background: #fff;
   max-width: 373px;
 
@@ -174,18 +326,18 @@ span {
   bottom: 3px;
   width: 20px;
   height: 20px;
-  background: url(../icons/akar-icons_github-fill.svg) no-repeat center center;
+  background: url(../icons/github-code.svg) no-repeat center center;
 }
 
 .projects__carts-link-live::before {
   content: "";
   display: inline-flex;
   position: absolute;
-  left: 18px;
+  left: 25px;
   bottom: 3px;
   width: 20px;
   height: 20px;
-  background: url(../icons/Group.svg) no-repeat center center;
+  background: url(../icons/live.svg) no-repeat center center;
 }
 
 .footer__inner {
@@ -216,6 +368,10 @@ span {
   gap: 10px;
 }
 
+.footer__icon {
+  transition: transform 0.2s ease;
+}
+
 hr {
   margin: 0;
   height: 3px;
@@ -230,11 +386,9 @@ hr {
 }
 
 .footer_text {
-    display: inline;
+  display: inline;
   font-size: 18px;
   line-height: 144%;
   color: #666;
   margin-bottom: 600px;
 }
-
-
