@@ -18,16 +18,20 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <header class="header">
+    <div id="splash-screen" class="splash-screen">
+  <div class="loading-message"><span>Welcome</span></div>
+</div>
+    <header class="header" id="header">
       <div class="container">
-        <div class="header__inner">
-          <a href="#" class="logo">
+        <div class="header__inner" id="home">
+          <a href="#" class="logo" id="logo">
             <img src="icons/logo.svg" alt="logo" />
           </a>
           <nav class="header__nav">
             <ul class="menu__list">
-              <li class="menu__list-item"><a href="#">Home</a></li>
-              <li class="menu__list-item"><a href="about.html">About</a></li>
+              <li class="menu__list-item"><a href="#home">Home</a></li>
+              <li class="menu__list-item"><a href="#about">About</a></li>
+              <li class="menu__list-item"><a href="#projects">Projects</a></li>
               <li class="menu__list-item"><a href="#">Contact</a></li>
             </ul>
             <div class="header__link">
@@ -39,7 +43,7 @@
         </div>
       </div>
     </header>
-    <main class="main">
+    <main class="main" id="height"">
       <section class="info">
         <div class="container">
           <div class="info__inner">
@@ -62,7 +66,7 @@
           </div>
         </div>
       </section>
-       <section class="about">
+       <section class="about" id="about">
         <div class="container">
           <div class="about__info">
           <h1 class="about__title">About Me</h1>
@@ -84,41 +88,57 @@
           </p>
           <div class="stack__img">
             <div class="stack__inner">
+              <div class="inner__content">
             <img src="img/html.png" alt="html" />
             <p class="stack__name">html</p>
             </div>
+            </div>
             <div class="stack__inner">
+              <div class="inner__content">
             <img src="img/css.png" alt="css" />
             <p class="stack__name">css</p>
             </div>
+            </div>
             <div class="stack__inner">
+              <div class="inner__content">
             <img src="img/js.png" alt="js" />
             <p class="stack__name">JavaScript</p>
             </div>
+            </div>
             <div class="stack__inner">
+              <div class="inner__content">
             <img src="img/react.png" alt="react" />
             <p class="stack__name">React</p>
             </div>
+            </div>
             <div class="stack__inner">
+              <div class="inner__content">
             <img src="img/sass.png" alt="sass" />
             <p class="stack__name">Sass</p>
             </div>
+            </div>
             <div class="stack__inner">
+              <div class="inner__content">
             <img src="img/git.png" alt="git" />
             <p class="stack__name">Git</p>
             </div>
+            </div>
             <div class="stack__inner">
+              <div class="inner__content">
             <img src="img/vscode.png" alt="vscode" />
             <p class="stack__name">VScode</p>
             </div>
+            </div>
             <div class="stack__inner">
+              <div class="inner__content">
             <img src="img/github.png" alt="gitHub" />
             <p class="stack__name">gitHub</p>
+            </div>
             </div>
           </div>
         </div>
       </section>
-      <section class="projects">
+      <section class="projects" id="projects">
         <div class="container">
           <h2 class="projects__title">Projects</h2>
           <p class="projects__text">Things I’ve built so far</p>
@@ -170,7 +190,7 @@
     <footer class="footer">
       <div class="container">
         <div class="footer__inner">
-          <a href="#" class="footer-logo">
+          <a href="#" class="footer-logo" id="logo">
             <img src="icons/footerLogo.svg" alt="" />
           </a>
           <div class="footer__menu">
@@ -195,9 +215,10 @@
         <hr />
         <div class="footer__nav">
           <ul class="menu__list">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li class="footer-link"><a href="#home">Home</a></li>
+            <li class="footer-link"><a href="#about">About</a></li>
+            <li class="footer-link"><a href="#projects">Projects</a></li>
+            <li class="footer-link"><a href="#">Contact</a></li>
           </ul>
           <p class="footer__text">
             Created by <span>Hrabar A.U</span> with <span>Love</span> &
