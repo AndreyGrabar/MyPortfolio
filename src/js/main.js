@@ -169,6 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // the appearance of elements when scroll 
 document.addEventListener("DOMContentLoaded", () => {
   const simpleElements = document.querySelectorAll(".projects__carts");
+   const simpleElements2 = document.querySelectorAll(".contacts");
 
   const callback = (entries, observer) => {
     entries.forEach((entry) => {
@@ -184,5 +185,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   simpleElements.forEach((element) => observer.observe(element));
+  simpleElements2.forEach((element) => observer.observe(element));
 });
 
