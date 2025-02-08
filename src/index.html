@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hrabar</title>
+    <title>AndreyHrabar</title>
     <link rel="icon" type="image/x-icon" href="icons/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,10 +17,11 @@
     />
     <link rel="stylesheet" href="css/modern-normalize.min.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/media.css">
   </head>
   <body>
     <div id="splash-screen" class="splash-screen">
-      <div class="loading-message"><span>Welcome</span></div>
+      <div class="loading-message"><span class="gradient">Welcome</span></div>
     </div>
     <header class="header" id="header">
       <div class="container">
@@ -59,21 +60,20 @@
               /></a>
             </div>
           </nav>
+            <div class="burger">
+              <span></span>
+            </div>
         </div>
       </div>
-    </header>
+    </header> 
     <main class="main" id="height">
       <section class="info">
         <div class="container">
           <div class="info__inner">
             <h1 class="info-title" id="info-title">
-              <!-- Hi 👋, <br />
-              My name is <br />
-              <span>Hrabar A.U</span> <br />
-              I build things for web -->
             </h1>
             <div class="button">
-              <a href="#" class="anchor"><span class="btn">Contact Me</span></a>
+              <a href="#contacts" class="anchor"><span class="gradient">Contact Me</span></a>
             </div>
             <img src="img/myphoto.jpg" alt="photo" class="myphoto" />
           </div>
@@ -156,6 +156,25 @@
           <h2 class="projects__title">Projects</h2>
           <p class="projects__text">Things I’ve built so far</p>
           <div class="grid">
+            <div class="projects__carts">
+              <img src="img/LoftHouse.jpg" alt="" />
+              <h3 class="projects__carts-title">Loft House</h3>
+              <p class="projects__carts-text">Tech stack : HTML , CSS , SCSS</p>
+              <div class="projects__carts-links">
+                <a
+                  href="https://andreygrabar.github.io/LoftHouse/src/"
+                  target="_blank"
+                  class="projects__carts-link-live"
+                  >Live Preview</a
+                >
+                <a
+                  href="https://github.com/AndreyGrabar/LoftHouse"
+                  target="_blank"
+                  class="projects__carts-link-github"
+                  >View Code</a
+                >
+              </div>
+            </div>
             <div class="projects__carts">
               <img src="img/monovisionStudio.jpg" alt="" />
               <h3 class="projects__carts-title">Monovision Studio</h3>
@@ -257,8 +276,8 @@
             <li class="footer-link"><a href="#contacts">Contacts</a></li>
           </ul>
           <p class="footer__text">
-            Created by <span>Hrabar A.U</span> with <span>Love</span> &
-            <span>Coffee</span>
+            Created by <span class="gradient">Hrabar A.U</span> with <span class="gradient">Love</span> &
+            <span class="gradient">Coffee</span>
           </p>
         </div>
       </div>

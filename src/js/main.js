@@ -17,43 +17,85 @@ window.addEventListener("load", () => {
 
 
   function typeText() {
-    if (partIndex < textParts.length) {
-      const currentPart = textParts[partIndex];
+    const screenWidth = window.innerWidth;
 
-      if (typeof currentPart === "string") {
-        if (charIndex < currentPart.length) {
-          currentText += currentPart[charIndex];
-          infoTitleElement.innerHTML = currentText;
-          charIndex++;
-          setTimeout(typeText, typingSpeed);
-        } else {
-          currentText += "<br>";
-          charIndex = 0;
+    if (screenWidth >= 550) {
+      if (partIndex < textParts.length) {
+        const currentPart = textParts[partIndex];
+
+        if (typeof currentPart === "string") {
+          if (charIndex < currentPart.length) {
+            currentText += currentPart[charIndex];
+            infoTitleElement.innerHTML = currentText;
+            charIndex++;
+            setTimeout(typeText, typingSpeed);
+          } else {
+            currentText += "<br>";
+            charIndex = 0;
+            partIndex++;
+            setTimeout(typeText, typingSpeed);
+          }
+        } else if (currentPart.type === "styled") {
+          if (charIndex < currentPart.content.length) {
+            const span = `<span>${currentPart.content.slice(
+              0,
+              charIndex + 1
+            )}</span>`;
+            infoTitleElement.innerHTML = currentText + span;
+            charIndex++;
+            setTimeout(typeText, typingSpeed);
+          } else {
+            currentText += `<span>${currentPart.content}</span><br>`;
+            charIndex = 0;
+            partIndex++;
+            setTimeout(typeText, typingSpeed);
+          }
+        } else if (currentPart.type === "fixed") {
+          currentText += currentPart.content + "<br>";
           partIndex++;
           setTimeout(typeText, typingSpeed);
         }
-      } else if (currentPart.type === "styled") {
-        if (charIndex < currentPart.content.length) {
-          const span = `<span>${currentPart.content.slice(
-            0,
-            charIndex + 1
-          )}</span>`;
-          infoTitleElement.innerHTML = currentText + span;
-          charIndex++;
-          setTimeout(typeText, typingSpeed);
-        } else {
-          currentText += `<span>${currentPart.content}</span><br>`;
-          charIndex = 0;
+      }
+    } else {
+      if (partIndex < textParts.length) {
+        const currentPart = textParts[partIndex];
+
+        if (typeof currentPart === "string") {
+          if (charIndex < currentPart.length) {
+            currentText += currentPart[charIndex];
+            infoTitleElement.innerHTML = currentText;
+            charIndex++;
+            setTimeout(typeText, typingSpeed);
+          } else {
+            currentText += " ";
+            charIndex = 0;
+            partIndex++;
+            setTimeout(typeText, typingSpeed);
+          }
+        } else if (currentPart.type === "styled") {
+          if (charIndex < currentPart.content.length) {
+            const span = `<span>${currentPart.content.slice(
+              0,
+              charIndex + 1
+            )}</span>`;
+            infoTitleElement.innerHTML = currentText + span;
+            charIndex++;
+            setTimeout(typeText, typingSpeed);
+          } else {
+            currentText += `<span>${currentPart.content}</span> `;
+            charIndex = 0;
+            partIndex++;
+            setTimeout(typeText, typingSpeed);
+          }
+        } else if (currentPart.type === "fixed") {
+          currentText += currentPart.content + " ";
           partIndex++;
           setTimeout(typeText, typingSpeed);
         }
-      } else if (currentPart.type === "fixed") {
-        currentText += currentPart.content + "<br>";
-        partIndex++;
-        setTimeout(typeText, typingSpeed);
       }
     }
   }
+    
 
   setTimeout(() => {
     typeText(); 
@@ -70,46 +112,29 @@ window.addEventListener("load", () => {
 
 
 
-// Scroll header link
-document.querySelectorAll(".menu__list-item a").forEach((link) => {
-  link.addEventListener("click", function (event) {
-    event.preventDefault(); 
+// scroll footer and header
+function smoothScroll(selector) {
+  document.querySelectorAll(selector).forEach((link) => {
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
 
-    const targetId = this.getAttribute("href").substring(1); 
-    const targetElement = document.getElementById(targetId); 
+      const targetId = this.getAttribute("href").substring(1);
+      const targetElement = document.getElementById(targetId);
 
-    if (targetElement) {
-      const offset = 120; 
-      const targetPosition = targetElement.offsetTop; 
+      if (targetElement) {
+        const offset = 120;
+        const targetPosition = targetElement.offsetTop;
 
-      window.scrollTo({
-        top: targetPosition - offset, 
-        behavior: "smooth", 
-      });
-    }
+        window.scrollTo({
+          top: targetPosition - offset,
+          behavior: "smooth",
+        });
+      }
+    });
   });
-});
-
-
-// Scroll footer link
-document.querySelectorAll(".footer-link a").forEach((link) => {
-  link.addEventListener("click", function (event) {
-    event.preventDefault(); 
-
-    const targetId = this.getAttribute("href").substring(1); 
-    const targetElement = document.getElementById(targetId); 
-
-    if (targetElement) {
-      const offset = 120; 
-      const targetPosition = targetElement.offsetTop; 
-
-      window.scrollTo({
-        top: targetPosition - offset, 
-        behavior: "smooth", 
-      });
-    }
-  });
-});
+}
+smoothScroll(".menu__list-item a");
+smoothScroll(".footer-link a");
 
 
 // Add styles to the header when scrolling
@@ -122,6 +147,22 @@ window.addEventListener("scroll", () => {
   } else {
     header.classList.remove("scrolled"); 
   }
+});
+
+// scroll in btn anchor
+document.querySelectorAll("a.anchor").forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute("href").slice(1); 
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop, 
+        behavior: "smooth", 
+      });
+    }
+  });
 });
 
 // reboot page when click on the logo
@@ -188,3 +229,21 @@ document.addEventListener("DOMContentLoaded", () => {
   simpleElements2.forEach((element) => observer.observe(element));
 });
 
+
+//Burger Menu
+const menuBtn = document.querySelector(".burger");
+const menu = document.querySelector(".header__nav");
+
+menuBtn.addEventListener("click", () => {
+  menu.classList.toggle("open"); 
+  menuBtn.classList.toggle("active"); 
+});
+
+const menuItems = document.querySelectorAll(".header__nav ul li");
+menuItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    
+    menu.classList.remove("open");
+    menuBtn.classList.remove("active");
+  });
+});

@@ -177,7 +177,7 @@ a {
 
 .myphoto {
   border-radius: 40px;
-  width: 349px;
+  max-width: 349px;
   border: #42446e 1px solid;
   box-shadow: 15px 10px 30px 0 rgba(63, 63, 63, 0.804);
 }
@@ -191,10 +191,18 @@ a {
   width: 500px;
 }
 
-span {
+.gradient {
   background: linear-gradient(90deg, #13b0f5 2.6%, #e70faa 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.info-title {
+  span {
+    background: linear-gradient(90deg, #13b0f5 2.6%, #e70faa 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 .about {
@@ -499,9 +507,9 @@ hr {
 .contacts__link-icon {
   align-items: center;
   padding: 15px;
-  border-radius: 50%; 
+  border-radius: 50%;
   box-shadow: inset 1px 3px 10px rgba(0, 0, 0, 0.3),
-    inset -3px -3px 10px rgba(255, 255, 255, 0.8); 
+    inset -3px -3px 10px rgba(255, 255, 255, 0.8);
   transition: all 0.2s ease;
 }
 
@@ -518,15 +526,68 @@ hr {
   display: flex;
   justify-content: space-between;
   font-size: 18px;
-line-height: 81%;
-margin: 0 20px 0 20px;
-color: #666;
+  line-height: 81%;
+  margin: 0 20px 0 20px;
+  color: #666;
 }
 
 .contacts__wrapper {
   padding: 15px;
-  background-color: #fff; 
-  border-radius: 25px; 
+  background-color: #fff;
+  border-radius: 25px;
   box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.2),
     -4px -4px 10px rgba(255, 255, 255, 0.5);
+}
+
+.burger {
+  display: none;
+  position: relative;
+  z-index: 50;
+  align-items: center;
+  justify-content: flex-end;
+  width: 30px;
+  height: 18px;
+}
+
+.burger span {
+  height: 2px;
+  width: 80%;
+  transform: scale(1);
+  background-color: #000;
+}
+
+.burger::before,
+.burger::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background-color: #000;
+  transition: all 0.3s ease 0s;
+}
+
+.burger::before {
+  top: 0;
+}
+.burger::after {
+  bottom: 0;
+}
+
+.burger.active span {
+  transform: scale(0);
+}
+
+.burger.active::before {
+  top: 50%;
+  transform: rotate(45deg) translateY(-50%);
+}
+
+.burger.active::after {
+  bottom: 50%;
+  transform: rotate(-45deg) translateY(50%);
+}
+.burger.active span,
+.burger.active::before,
+.burger.active::after {
+  background-color: #666;
 }
