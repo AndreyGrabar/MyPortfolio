@@ -149,22 +149,6 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// scroll in btn anchor
-document.querySelectorAll("a.anchor").forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute("href").slice(1); 
-    const targetElement = document.getElementById(targetId);
-
-    if (targetElement) {
-      window.scrollTo({
-        top: targetElement.offsetTop, 
-        behavior: "smooth", 
-      });
-    }
-  });
-});
-
 // reboot page when click on the logo
 const logos = document.querySelectorAll("#logo");
 
