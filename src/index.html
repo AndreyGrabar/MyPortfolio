@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="css/modern-normalize.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/media.css" />
+    
   </head>
   <body>
     <div id="splash-screen" class="splash-screen">
@@ -76,7 +77,10 @@
                 ><span class="gradient">Download CV</span></a
               >
             </div>
-            <img src="img/myPhoto.jpg" alt="photo" class="myphoto" />
+            <div class="photo-container">
+              <img src="img/myPhoto.jpg" alt="photo" class="myphoto" />
+            </div>
+            </div>
           </div>
         </div>
       </section>
@@ -101,7 +105,7 @@
             Technologies I’ve been working with recently
           </p>
           <div class="stack__img">
-            <div class="stack__inner">
+            <div class="stack__inner" data-tooltip="Мова розмітки для веб-сторінок">
               <div class="inner__content">
                 <img src="img/html.png" alt="html" />
                 <p class="stack__name">html</p>
@@ -149,6 +153,12 @@
                 <p class="stack__name">gitHub</p>
               </div>
             </div>
+            <div class="stack__inner">
+              <div class="inner__content">
+                <img src="img/wordpress.png" alt="wordpress" />
+                <p class="stack__name">Wordpress</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -156,7 +166,7 @@
         <div class="container">
           <h2 class="projects__title">Projects</h2>
           <p class="projects__text">Things I’ve built so far</p>
-          <div class="grid">
+          <div class="grid" id="projects_grid">
             <div class="projects__carts">
               <img src="img/LoftHouse.jpg" alt="" />
               <h3 class="projects__carts-title">Loft House</h3>
@@ -217,6 +227,7 @@
               </div>
             </div>
           </div>
+          <button id="load_more_btn" class="project_btn"><span class="project_btn-text">more</span></button>
         </div>
       </section>
       <section class="contacts" id="contacts">
@@ -284,6 +295,6 @@
         </div>
       </div>
     </footer>
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>

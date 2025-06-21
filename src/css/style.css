@@ -131,6 +131,7 @@ a {
 .info__inner {
   display: flex;
   justify-content: space-between;
+  gap: 100px;
   position: relative;
 }
 
@@ -175,12 +176,31 @@ a {
   transition: all 0.3s ease;
 }
 
-.myphoto {
-  border-radius: 40px;
-  max-width: 349px;
-  border: #42446e 1px solid;
-  box-shadow: 15px 10px 30px 0 rgba(63, 63, 63, 0.804);
+.photo-container {
+  overflow: hidden;
 }
+
+.myphoto {
+  max-width: 349px;
+  height: auto;
+  display: block;
+  border-radius: 40px;
+  clip-path: inset(0 100% 0 0);
+  transition: 
+    clip-path 3s ease-in-out,
+    opacity 3s ease,
+    filter 3.5s ease;
+
+  opacity: 0;
+  filter: blur(10px);
+ } 
+
+.myphoto.revealed {
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+  filter: blur(0);
+  border: 2px solid #42446e;
+}  
 
 .info-title {
   font-weight: 700;
@@ -286,6 +306,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: auto;
   box-shadow: -15px -15px 100px hsla(0, 0%, 100%, 1),
     15px 15px 8px rgba(0, 0, 0, 0.15), -5px -5px 15px rgba(0, 0, 0, 0.1),
     5px 5px 10px rgba(0, 0, 0, 0.05);
@@ -296,7 +317,23 @@ a {
 .stack__inner {
   opacity: 0;
   transform: translateY(100px);
-  transition: opacity 1s ease, transform 1s ease;
+  animation-play-state: paused;
+  transform: scale(1.05); 
+  cursor: pointer;
+  animation: pulse 5s infinite;
+  transition: opacity 1.5s ease, transform 1.3s ease;
+}
+
+.stack__inner:hover {
+  animation-play-state: paused;
+}
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .stack__inner.visible {
@@ -339,8 +376,78 @@ a {
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  column-gap: 50px;
+  gap: 50px;
 }
+
+.project_btn {
+  display: block;
+  font-size: 20px;
+  margin: 80px auto 0 auto;
+  padding: 12px 80px;
+  border-radius: 50px;
+  color: #ffffff;
+  background: #1e1f3a;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+}
+
+.project_btn::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 180deg at 50% 50%, #6e7aff, #b25eff, #6e7aff);
+  animation: rotate 4s linear infinite;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.project_btn-text {
+  position: relative;
+  z-index: 2;
+  text-transform: uppercase;
+}
+
+
+
+
+.project_btn::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 50px;
+  background: #1e1f3a;
+  z-index: 1;
+}
+
+.project_btn:hover {
+  transform: scale(1.05);
+  color: #fff;
+  border-color: #6e7aff;
+}
+
+.project_btn:hover::before {
+  opacity: 1;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
 
 .projects__carts {
   border-radius: 20px;
@@ -361,6 +468,38 @@ a {
 .contacts.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.projects__carts::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  border-radius: 20px;
+  padding: 2px; 
+  background: linear-gradient(90deg, #13b0f5 2.6%, #e70faa 100%);
+  background-size: 400% 400%;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude; 
+  animation: borderAnimation 20s linear infinite;
+  z-index: 2;
+}
+
+.projects__carts > * {
+  position: relative;
+  z-index: 3;
+}
+
+@keyframes borderAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 400% 50%;
+  }
 }
 
 .projects__carts-title {
@@ -396,6 +535,12 @@ a {
   color: #5e0ff0;
 }
 
+.projects__carts-link-live.disabled {
+  color: gray;
+  pointer-events: none; 
+  cursor: default;
+}
+
 .projects__carts-link-github::before {
   content: "";
   display: inline-flex;
@@ -406,6 +551,8 @@ a {
   height: 20px;
   background: url(../icons/github-code.svg) no-repeat center center;
 }
+
+
 
 .projects__carts-link-live::before {
   content: "";
@@ -591,3 +738,5 @@ hr {
 .burger.active::after {
   background-color: #666;
 }
+
+
