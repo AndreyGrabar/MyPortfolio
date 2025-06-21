@@ -5,7 +5,7 @@ export function initLoadMoreProjects() {
       title: "Marvel Portal",
       tech: "HTML, SCSS, React, API",
       code: "https://github.com/AndreyGrabar/Marvel-Portal",
-      live: "",
+      live: "https://andreygrabar.github.io/Marvel-Portal/",
     },
     {
       img: "img/food_order.jpg",
