@@ -8,6 +8,13 @@ export function initLoadMoreProjects() {
       live: "https://andreygrabar.github.io/Marvel-Portal/",
     },
     {
+      img: "img/food_order.jpg",
+      title: "Food Order",
+      tech: "HTML, CSS, Node.js, React",
+      code: "https://github.com/AndreyGrabar/Food_Order",
+      live: "",
+    },
+    {
       img: "img/childhood.jpg",
       title: "ChildHood",
       tech: "HTML, CSS, WordPress",
