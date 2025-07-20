@@ -292,8 +292,8 @@ a {
 .stack__img {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  row-gap: 78px;
-  column-gap: 70px;
+  row-gap: 40px;
+  column-gap: 40px;
   align-items: center;
   img {
     justify-self: center;
