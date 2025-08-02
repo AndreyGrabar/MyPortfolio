@@ -21,6 +21,13 @@ export function initLoadMoreProjects() {
       code: "https://github.com/AndreyGrabar/Childhood",
       live: "",
     },
+    {
+      img: "img/monovisionStudio.jpg",
+      title: "Monovision Studio",
+      tech: "HTML, CSS",
+      code: "https://github.com/AndreyGrabar/Monovision-Studio",
+      live: "https://andreygrabar.github.io/Monovision-Studio/src/",
+    },
   ];
 
   const loadMoreBtn = document.getElementById("load_more_btn");
